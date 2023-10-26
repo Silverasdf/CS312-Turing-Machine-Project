@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\title{Turing Machine Documentation}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document provides documentation for a Turing machine, which is a mathematical model of computation. The purpose of this machine is to perform computations on an input tape, which is a sequence of symbols.
+
+\section{Definition}
+A Turing machine is defined by a 7-tuple $(Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$, where:
+\begin{itemize}
+    \item $Q$ is a finite set of states.
+    \item $\Sigma$ is a finite set of input symbols.
+    \item $\Gamma$ is a finite set of tape symbols, where $\Sigma \subseteq \Gamma$.
+    \item $\delta$ is the transition function, which maps $Q \times \Gamma$ to $Q \times \Gamma \times \{L, R\}$, where $L$ and $R$ represent left and right movement on the tape.
+    \item $q_0$ is the initial state.
+    \item $q_{accept}$ is the accepting state.
+    \item $q_{reject}$ is the rejecting state.
+\end{itemize}
+
+\section{States and Transitions}
+The Turing machine operates by moving between states and performing transitions on the tape. The states and transitions are defined by the 7-tuple above.
+
+\section{Examples}
+Here are some examples of input and output for the Turing machine:
+\begin{itemize}
+    \item Input: 0011, Output: 1100
+    \item Input: 101, Output: 010
+\end{itemize}
+
+\section{Conclusion}
+The Turing machine is a powerful tool for performing computations on input tapes. It has applications in computer science, mathematics, and other fields.
+
+\end{document}
