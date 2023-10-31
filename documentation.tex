@@ -15,25 +15,36 @@
 This document provides documentation for a Turing machine, which is a mathematical model of computation. The purpose of this machine is to perform computations on an input tape, which is a sequence of symbols.
 
 \section{Definition}
-A Turing machine is meant to make a stack and queue depending on the input
+A Turing machine is meant to make a stack and queue depending on the input. It's meant to be a visualization tool for CS 202 students
+studying these data structures. This is a really good visualization tool, as the program used to build the Turing Machine provides the overhead for
+the visualization.
 
 \section{States and Transitions}
-The Turing machine operates by moving between states and performing transitions on the tape. The states and transitions are defined by the 7-tuple above.
+The Turing machine operates by moving between states and performing transitions on the tape. The states and transitions are labelled as follows:
 
 \begin{itemize}
-    \item $Red$ are all the reject states ($q_{reject}$ )
-    \item $Green$ are all the accept states ($q_{accept}$ )
-    \item $Blue$ is the Queue
-    \item $Magenta$ is the Stack
+    \item $Red$ are all the reject states ($q_{reject}$)
+    \item $Green$ are all the accept states ($q_{accept}$)
+    \item $Blue$ is the Queue's add States
+    \item $Yellow$ is the Queue's remove States
+    \item $Magenta$ is the Stack with the add states
+    \item $Cyan$ is the Stack with the remove states
     \item $Black$ are the initial states to set up the $\#$
 \end{itemize}
+
+\section{Instructions}
+A's mean to add the next character and D's mean to delete from the top or the bottom, depending on whether you specified a stack or a queue
+by either inputting an S or Q at the beginning of the string. 
+You can add a,b,c, or d. This can, of course, be implemented with any character,
+but using only 4 characters makes it easier to visualize the states.
 
 \section{Examples}
 Here are some examples of input and output for the Turing machine:
 \begin{itemize}
-    \item \begin{verbatim} Input: SA1A2D, Output: xxxxxx#1 \end{verbatim}
-    \item \begin{verbatim} Input: QA1A2D, Output: xxxxxx#2 \end{verbatim}
-    \item \begin{verbatim} Input: QA#A2D, Output: INVALID \end{verbatim}
+    \item \begin{verbatim} Input: SAaAbD, Output: xxxxxx#a \end{verbatim}
+    \item \begin{verbatim} Input: QAaAbD, Output: xxxxxx#b \end{verbatim}
+    \item \begin{verbatim} Input: QA#AbD, Output: INVALID \end{verbatim}
+    \item \begin{verbatim} Input: QA1A2D, Output: INVALID \end{verbatim}
 \end{itemize}
 
 \section{Conclusion}
