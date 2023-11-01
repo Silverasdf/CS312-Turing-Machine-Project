@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{tikz}
+\usepackage{graphicx}
 
 \title{Turing Machine Documentation}
 \author{Ryan Peruski, Maria Hernandez}
@@ -42,8 +43,12 @@ The transitions can be summarized as follows:
 \end{itemize}
 
 \section{Image}
-% \begin{center}
-    % \includegraphics[width=0.8\textwidth]{turing_machine.png}
+test test
+\begin{figure}
+    \includegraphics[width=\linewidth]{stackqueue.png}
+    \caption{Turing Machine.}
+    \label{fig:stackqueue}
+\end{figure}
 
 \section{Instructions}
 A's mean to add the next character and D's mean to delete from the top or the bottom, depending on whether you specified a stack or a queue
