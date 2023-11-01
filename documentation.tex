@@ -28,7 +28,8 @@ The Turing machine operates by moving between states and performing transitions 
     \item $Red$ are all the reject states ($q_{reject}$)
     \item $Green$ are all the accept states ($q_{accept}$)
     \item $Blue$ is the Queue's add States
-    \item $Yellow$ is the Queue's remove States
+    \item $Yellow$ is the Queue's remove States (1st part: $deletion$)
+    \item $Orange$ is the Queue's remove States  (2nd part: $movement$)
     \item $Magenta$ is the Stack with the add states
     \item $Cyan$ is the Stack with the remove states
     \item $Black$ are the initial states to set up the $\#$
@@ -54,7 +55,9 @@ but using only 4 characters makes it easier to visualize the states.
 Here are some examples of input and output for the Turing machine:
 \begin{itemize}
     \item \begin{verbatim} Input: SAaAbD, Output: xxxxxx#a \end{verbatim}
+    \item \begin{verbatim} Input: SAaAbAcDAdAaDD, Output: xxxxxxxxxxxxx#ab \end{verbatim}
     \item \begin{verbatim} Input: QAaAbD, Output: xxxxxx#b \end{verbatim}
+    \item \begin{verbatim} Input: QAaAbAcDAdAaDD, Output: xxxxxxxxxxxxx#da \end{verbatim}
     \item \begin{verbatim} Input: QA#AbD, Output: INVALID \end{verbatim}
     \item \begin{verbatim} Input: QA1A2D, Output: INVALID \end{verbatim}
 \end{itemize}
