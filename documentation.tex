@@ -18,9 +18,8 @@
     \item Maria Hernandez
 \end{itemize}
 \section{Definition}
-A Turing machine is meant to make a stack and queue depending on the input. It's meant to be a visualization tool for CS 202 students
-studying these data structures. This is a really good visualization tool, as the program used to build the Turing Machine provides the overhead for
-the visualization.
+This Turing machine uses the power of the stack to do a simple check for C-code. It checks for correct parenthesis, square bracket, and curly brace
+placement. It will accept any code that has correct placement of these characters, and it will reject any code that does not.
 
 \section{States, Transitions, Image}
 The Turing machine operates by moving between states and performing transitions on the tape. The states and transitions are labelled as follows:
@@ -49,20 +48,21 @@ Finally, the Turing Machine is shown in Figure\ \ref{fig:stackqueue}.
 \end{figure}
 
 \section{Instructions}
-A's mean to add the next character and D's mean to delete from the top or the bottom, depending on whether you specified a stack or a queue
-by either inputting an S or Q at the beginning of the string. 
-You can add a,b,c, or d. This can, of course, be implemented with any character,
-but using only 4 characters makes it easier to visualize the states.
+This Turing Machine can input any C-code (or code in general that uses parenthesis) and it will place left parenthesis on the stack and pop
+right parenthesis. If it does not see a parenthesis of the right type or none at all, it will reject. If the code ends with anything on the
+stack, it will reject. If the code is empty, it will accept. 
+
+The only thing that the machine will reject on is a $\#$, as this is a marker between the code and the stack.
 
 \section{Examples}
 Here are some examples of input and output for the Turing machine:
 \begin{itemize}
-    \item \begin{verbatim} Input: SAaAbD, Output: xxxxxx#a \end{verbatim}
-    \item \begin{verbatim} Input: SAaAbAcDAdAaDD, Output: xxxxxxxxxxxxx#ab \end{verbatim}
-    \item \begin{verbatim} Input: QAaAbD, Output: xxxxxx#b \end{verbatim}
-    \item \begin{verbatim} Input: QAaAbAcDAdAaDD, Output: xxxxxxxxxxxxx#da \end{verbatim}
-    \item \begin{verbatim} Input: QA#AbD, Output: INVALID \end{verbatim}
-    \item \begin{verbatim} Input: QA1A2D, Output: INVALID \end{verbatim}
+    \item \begin{verbatim} Input: v[i] = a[i][j];, Output: xxxxxxxxxxxxxxx#qa \end{verbatim}
+    \item \begin{verbatim} Input: for (;;) break;, Output: xxxxxxxxxxxxxxx#qa \end{verbatim}
+    \item \begin{verbatim} Input: {x = 7}, Output: xxxxx#qa \end{verbatim}
+    \item \begin{verbatim} Input: for(i=0;i<v.size();i++) v[i]=2;, Output: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#qa \end{verbatim}
+    \item \begin{verbatim} Input: v[i] = a[i, Output: INVALID \end{verbatim}
+    \item \begin{verbatim} Input: for(;;, Output: INVALID \end{verbatim}
 \end{itemize}
 
 \section{Conclusion}
