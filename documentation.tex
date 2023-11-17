@@ -55,15 +55,25 @@ stack, it will reject. If the code is empty, it will accept.
 
 The only thing that the machine will reject on is a $\#$, as this is a marker between the code and the stack.
 
+Note that machine CANNOT handle whitespace ANYWHERE
+Also, when using a backslash within quotes, only the quotes, newlines, and null characters are accepted.
+Of course, we could add more support for backslash characters, but we didn't want to make the machine too needlessly complicated.
+
 \section{Examples}
 Here are some examples of input and output for the Turing machine:
 \begin{itemize}
-    \item \begin{verbatim} Input: v[i] = a[i][j];, Output: xxxxxxxxxxxxxxx#qa \end{verbatim}
-    \item \begin{verbatim} Input: for (;;) break;, Output: xxxxxxxxxxxxxxx#qa \end{verbatim}
-    \item \begin{verbatim} Input: {x = 7}, Output: xxxxx#qa \end{verbatim}
-    \item \begin{verbatim} Input: for(i=0;i<v.size();i++) v[i]=2;, Output: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#qa \end{verbatim}
-    \item \begin{verbatim} Input: v[i] = a[i, Output: INVALID \end{verbatim}
-    \item \begin{verbatim} Input: for(;;, Output: INVALID \end{verbatim}
+    \item \begin{verbatim} Input: v[i]=a[i][j];, Output:  xxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: for(;;)break;, Output:  xxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: {x=7}, Output: xxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: for(i=0;i<v.size();i++)v[i]=2;, Output: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: v[i]=a[i, Output:  xxxxxxxx#Rqr \end{verbatim}
+    \item \begin{verbatim} Input: for(;;, Output:  xxxxxx#Rqr \end{verbatim}
+    \item \begin{verbatim} Input: printf("HelloWorld!\n");, Output:   xxxxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: printf("Hereisa{(");, Output:  xxxxxx#qa\end{verbatim}
+    \item \begin{verbatim} Input: """, Output: xxx#qr\end{verbatim}
+    \item \begin{verbatim} Input: 'a''\n', Output: xxxxxxx#bqa\end{verbatim}
+    \item \begin{verbatim} Input: /*WeSupportComments!*/, Output:  xxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: /*WeSupportComments!{{{{*/, Output:  xxxxxxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
 \end{itemize}
 
 \section{Conclusion}
