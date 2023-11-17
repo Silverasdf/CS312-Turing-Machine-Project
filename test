@@ -1,0 +1,10 @@
+// allowed
+/*
+/*/ 
+
+/*HelloWorld*/
+
+// not allowed
+/*
+*/
+//*/
