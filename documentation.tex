@@ -96,11 +96,11 @@ Here are some examples of input and output for the Turing machine:
 \end{itemize}
 
 \section{Considerations} 
-
+\begin{verbatim} 
 The operators that gave us the most work were /* and */ since the tape reads one character at a time, we needed to take into account a lot of possible scenarios so that the machine 
 does not halt, and correctly behaves when the original tape has something like *{/}, or /(*), or, *(*), or *[/} (reject in this case.). That's why there are a lot of transitions 
 coming out of states 24 and 25. Also, we needed a special branch (purple branch) for the comments so that we could ignore everything inside /* */
-
+\end{verbatim}
 \section{Conclusion}
 The Turing machine is a powerful tool for performing computations on input tapes. It has applications in computer science, mathematics, and other fields.
 
