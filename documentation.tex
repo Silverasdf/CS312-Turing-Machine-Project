@@ -74,10 +74,36 @@ Here are some examples of input and output for the Turing machine:
     \item \begin{verbatim} Input: 'a''\n', Output: xxxxxxx#bqa\end{verbatim}
     \item \begin{verbatim} Input: /*WeSupportComments!*/, Output:  xxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
     \item \begin{verbatim} Input: /*WeSupportComments!{{{{*/, Output:  xxxxxxxxxxxxxxxxxxxxxxxxxx#bqa \end{verbatim}
+    \item \begin{verbatim} Input: /*/*/, Output: xxxxx# , ACCEPTS \end{verbatim}  
+    \item \begin{verbatim} Input: /*/*, Output: xxxx#/* , REJECTS \end{verbatim}
+    \item \begin{verbatim} Input: */*/, Output:  xx*/#  , REJECTS \end{verbatim}
+    \item \begin{verbatim} Input: /*a*b*/, Output: xxxxxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: /*HelloWorld*/*/, Output: xxxxxxxxxxxxxxxx#  , REJECTS \end{verbatim}
+    \item \begin{verbatim} Input: /*/**/, Output:  xxxxxx# , ACCEPTS, NOTE: It accepts because it treats the inner /* as comment, but normal compilers throw a warning in these cases \end{verbatim} 
+    \item \begin{verbatim} Input: /*}*/, Output: xxxxx# , ACCEPTS, NOTE: } doesn't have the opening {, but this accepts because it treats anything inside /**/ as comments \end{verbatim}
+    \item \begin{verbatim} Input: /*/**/*/, Output: xxxxxxxx# , REJECTS, NOTE: last */ does not have an opening /*. Compilers do not accept nested comments \end{verbatim}
+    \item \begin{verbatim} Input: /*a*b* , Output: xxxxxx#/*  , REJECTS \end{verbatim}
+    \item \begin{verbatim} Input: (/, Output:  xx#( , REJECTS \end{verbatim} 
+    \item \begin{verbatim} Input: (/*****)*/* , Output:  xxxxxxxxxxx#( , REJECTS, NOTE: needs closing ) \end{verbatim}
+    \item \begin{verbatim} Input: (/*****)*/*), Output:  xxxxxxxxxxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: (/*****)*/*)*, Output:  xxxxxxxxxxxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: (/*)Hi***/}"", Output: xxxxxxxxxxx""#( , REJECTS, Note: rejects as soon as } doenst match ( \end{verbatim}
+    \item \begin{verbatim} Input: *{/}, Output:  xxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: /(*), Output:  xxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: *(*), Output:  xxxx# , ACCEPTS \end{verbatim}
+    \item \begin{verbatim} Input: *[/}, Output:  xxxx# , ACCEPTS \end{verbatim}
+
 \end{itemize}
+
+\section{Considerations} 
+
+The operators that gave us the most work were /* and */ since the tape reads one character at a time, we needed to take into account a lot of possible scenarios so that the machine 
+does not halt, and correctly behaves when the original tape has something like *{/}, or /(*), or, *(*), or *[/} (reject in this case.). That's why there are a lot of transitions 
+coming out of states 24 and 25. Also, we needed a special branch (purple branch) for the comments so that we could ignore everything inside /* */
 
 \section{Conclusion}
 The Turing machine is a powerful tool for performing computations on input tapes. It has applications in computer science, mathematics, and other fields.
+
 
 \end{document}
 
