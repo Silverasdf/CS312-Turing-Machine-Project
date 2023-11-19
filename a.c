@@ -3,7 +3,8 @@
 int main() { 
     printf("Hello\"awr\0u7t");
     printf("");
-    putc('\0', stdout);
+    putc('\'', stdout);
+    printf("Hereisa{(");
 }
 
 /********/
